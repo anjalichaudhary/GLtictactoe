@@ -34,7 +34,9 @@ def player_picks_square(board)
   until empty_square
     puts "Pick a square (1-9)"
     position = gets.chomp.to_i
-    if board[position] != 'X' &&  board[position] !=  'O'
+    if position == 0
+      puts " Please enter a digit between (1-9)"
+    elsif board[position] != 'X' &&  board[position] !=  'O'
       board[position] = 'X'
       empty_square = true
     else
