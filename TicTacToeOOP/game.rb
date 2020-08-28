@@ -2,8 +2,6 @@ require_relative './board'
 
 class Game
 
-  attr_reader :name, :board
-
   def initialize
     puts "What is your name?"
     @name = gets.chomp
@@ -18,15 +16,15 @@ class Game
 
       begin
         @board.player_picks_square
-        winner = @board.check_winner(name)
+        winner = @board.check_winner(@name)
         if winner
-          board.draw_board
+          @board.draw_board
           break
         end
-        board.computer_picks_square
-        board.draw_board
-        winner = board.check_winner(name)
-      end until winner || board.empty_positions.empty?
+        @board.computer_picks_square
+        @board.draw_board
+        winner = @board.check_winner(@name)
+      end until winner || @board.empty_positions.empty?
       if winner
         puts "#{winner} won!"
       else
@@ -38,7 +36,7 @@ class Game
       if answer != 'y'
         keep_playing = false
       else
-        puts "Thank you for keep playing #{name}."
+        puts "Thank you for keep playing #{@name}."
       end
     end
   end

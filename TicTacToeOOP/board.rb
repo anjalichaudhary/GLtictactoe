@@ -1,6 +1,5 @@
 class Board
 
-  attr_accessor :board
   def initialize
     @winning_combinations = [ [1,2,3],
                               [4,5,6],
@@ -42,8 +41,8 @@ class Board
     until empty_square
       puts "Pick a square (1-9)"
       position = gets.chomp.to_i
-      if board[position] != 'X' &&  board[position] !=  'O'
-        board[position] = 'X'
+      if @board[position] != 'X' &&  @board[position] !=  'O'
+        @board[position] = 'X'
         empty_square = true
       else
         puts "Sorry, square #{position} is not available. Please try again"
@@ -54,7 +53,7 @@ class Board
   def computer_picks_square
     position = empty_positions.sample
     puts "Computer chose #{position}"
-    board[position] = 'O'
+    @board[position] = 'O'
   end
 
 end
